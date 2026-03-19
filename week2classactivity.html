@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculator</title>
+    <style>
+        .fail {
+            color: #ff6f00;
+        }
+        .distinction {
+            color: rgb(195, 11, 170);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Marks for 8 Subjects</h2>
+
+    <form onsubmit="calculateResult(); return false;">
+        <input type="number" id="m1" placeholder="Subject 1"><br><br>
+        <input type="number" id="m2" placeholder="Subject 2"><br><br>
+        <input type="number" id="m3" placeholder="Subject 3"><br><br>
+        <input type="number" id="m4" placeholder="Subject 4"><br><br>
+        <input type="number" id="m5" placeholder="Subject 5"><br><br>
+        <input type="number" id="m6" placeholder="Subject 6"><br><br>
+        <input type="number" id="m7" placeholder="Subject 7"><br><br>
+        <input type="number" id="m8" placeholder="Subject 8"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function calculateResult() {
+            let total = 0;
+
+            for (let i = 1; i <= 8; i++) {
+                total += Number(document.getElementById("m" + i).value);
+            }
+
+            let resultText = "";
+            let resultClass = "";
+
+            if (total < 400) {
+                resultText = "Fail";
+                resultClass = "fail";
+            } else if (total < 500) {
+                resultText = "Third Division";
+            } else if (total < 600) {
+                resultText = "Second Division";
+            } else if (total < 700) {
+                resultText = "First Division";
+            } else {
+                resultText = "Distinction";
+                resultClass = "distinction";
+            }
+
+            let resultElement = document.getElementById("result");
+            resultElement.innerText = "Total Marks: " + total + " - " + resultText;
+            resultElement.className = resultClass;
+        }
+    </script>
+
+</body>
+</html>
