@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 80px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input {
+      width: 100px;
+      padding: 8px;
+      font-size: 18px;
+      margin: 5px;
+    }
+
+    button {
+      width: 120px;
+      padding: 10px;
+      font-size: 16px;
+      margin: 8px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      color: white;
+    }
+
+    /* 🎨 Changed colors here */
+    #addBtn      { background-color: orange; }
+    #subtractBtn { background-color: darkred; }
+    #multiplyBtn { background-color: teal; }
+    #divideBtn   { background-color: black; }
+
+    #result {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Simple Calculator</h1>
+
+  <input type="number" id="num1" placeholder="Number 1" />
+  <input type="number" id="num2" placeholder="Number 2" />
+
+  <br><br>
+
+  <button id="addBtn"      onclick="calculate('add')">Add</button>
+  <button id="subtractBtn" onclick="calculate('subtract')">Subtract</button>
+  <button id="multiplyBtn" onclick="calculate('multiply')">Multiply</button>
+  <button id="divideBtn"   onclick="calculate('divide')">Divide</button>
+
+  <div id="result">Result will show here</div>
+
+  <script>
+    function calculate(operation) {
+
+      // Get the values from input fields
+      var num1 = parseFloat(document.getElementById("num1").value);
+      var num2 = parseFloat(document.getElementById("num2").value);
+
+      // Check if inputs are empty
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById("result").innerText = "Please enter both numbers!";
+        return;
+      }
+
+      var answer;
+
+      // if else to decide which operation to do
+      if (operation == "add") {
+        answer = num1 + num2;
+        document.getElementById("result").innerText = num1 + " + " + num2 + " = " + answer;
+
+      } else if (operation == "subtract") {
+        answer = num1 - num2;
+        document.getElementById("result").innerText = num1 + " - " + num2 + " = " + answer;
+
+      } else if (operation == "multiply") {
+        answer = num1 * num2;
+        document.getElementById("result").innerText = num1 + " × " + num2 + " = " + answer;
+
+      } else if (operation == "divide") {
+        if (num2 == 0) {
+          document.getElementById("result").innerText = "Cannot divide by zero!";
+        } else {
+          answer = num1 / num2;
+          document.getElementById("result").innerText = num1 + " ÷ " + num2 + " = " + answer;
+        }
+      }
+
+    }
+  </script>
+
+</body>
+</html>
